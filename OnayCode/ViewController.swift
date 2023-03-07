@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     let cardInfo = [
         Card(progress: "51", header: "Level 1", subheader: "Basic", bgImage: UIImage(named: "level1")),
-        Card(progress: "10", header: "Level 2", subheader: "Basic", bgImage: UIImage(named: "level2")),
+        Card(progress: "10", header: "Naming", subheader: "Basic", bgImage: UIImage(named: "level2")),
         Card(progress: "3", header: "Level 3", subheader: "Basic", bgImage: UIImage(named: "level3")),
         Card(progress: "1", header: "Level 4", subheader: "Basic", bgImage: UIImage(named: "level4")),
         Card(progress: "1", header: "Level 5", subheader: "Basic", bgImage: UIImage(named: "level5"))
@@ -58,7 +58,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cardInfo.count
     }
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 1 {
+            navigationController?.pushViewController(NamingViewController(), animated: true)
+        }
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as? TableViewCell else {
             return UITableViewCell()
